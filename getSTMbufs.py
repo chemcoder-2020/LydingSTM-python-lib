@@ -871,9 +871,9 @@ def plot_svd(t, buf, U, D, V, svd_num, normalized=False, fg=None, bg=None):
         ax.xaxis.set_minor_formatter(mtick.NullFormatter())
         print(f"Weight of U{i}: {D[i]**2 / np.sum(D**2)}")
         fig.savefig(
-            f"U{i}_buf{buf}{suffix}_vs_time.tiff",
+            f"U{i}_buf{buf}{suffix}_vs_time.eps",
             bbox_inches="tight",
-            pil_kwargs={"compression": "tiff_lzw"},
+            # pil_kwargs={"compression": "tiff_lzw"},
         )
     plt.close(fig)
 
@@ -936,14 +936,14 @@ def save_movie_with_matplotlib(
             im = ax.imshow(frame, cmap=cmap)
             im.set_clim(clim)
             fig.savefig(
-                "./temp.tiff",
+                "./temp.eps",
                 bbox_inches="tight",
                 pad_inches=0,
-                pil_kwargs={"compression": "tiff_lzw"},
+                # pil_kwargs={"compression": "tiff_lzw"},
             )
-            frame_list.append(imageio.imread("./temp.tiff", format="TIFF-FI"))
+            frame_list.append(imageio.imread("./temp.eps"))
         imageio.mimwrite(savename, frame_list, fps=2)
-        remove("./temp.tiff")
+        remove("./temp.eps")
         plt.close(fig)
 
 
