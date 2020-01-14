@@ -1045,7 +1045,7 @@ def create_movies(reg_buffer_set, args, fg=None, bg=None):
         reg_buf = get_normalized_buffer_set(reg_buf)
         num_fn = num_fn[1:]
 
-    reg_buf = standardize_data(reg_buf)
+    # reg_buf = standardize_data(reg_buf)
 
     # get svd set for next processing before reg_buf is changed
     if svd_num is not None:
