@@ -105,7 +105,7 @@ def main():
         )
         fn = f.split(".")
         imsave(
-            "".join(fn[:-1]) + f"_cropped.{fn[-1]}",
+            f[: -1 - len(fn[-1])] + f"_cropped.{fn[-1]}",
             cropped_img,
             format="TIFF-PIL",
             # compression="tiff_deflate",
