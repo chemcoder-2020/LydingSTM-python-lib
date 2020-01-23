@@ -871,9 +871,9 @@ def plot_svd(t, buf, U, D, V, svd_num, normalized=False, fg=None, bg=None):
         ax.xaxis.set_minor_formatter(mtick.NullFormatter())
         print(f"Weight of U{i}: {D[i]**2 / np.sum(D**2)}")
         fig.savefig(
-            f"U{i}_buf{buf}{suffix}_vs_time.eps",
+            f"U{i}_buf{buf}{suffix}_vs_time.tiff",
             bbox_inches="tight",
-            # pil_kwargs={"compression": "tiff_lzw"},
+            pil_kwargs={"compression": "tiff_lzw"},
         )
     plt.close(fig)
 
@@ -936,14 +936,14 @@ def save_movie_with_matplotlib(
             im = ax.imshow(frame, cmap=cmap)
             im.set_clim(clim)
             fig.savefig(
-                "./temp.eps",
+                "./temp.tiff",
                 bbox_inches="tight",
                 pad_inches=0,
-                # pil_kwargs={"compression": "tiff_lzw"},
+                pil_kwargs={"compression": "tiff_lzw"},
             )
-            frame_list.append(imageio.imread("./temp.eps"))
+            frame_list.append(imageio.imread("./temp.tiff"))
         imageio.mimwrite(savename, frame_list, fps=2)
-        remove("./temp.eps")
+        remove("./temp.tiff")
         plt.close(fig)
 
 
@@ -1064,7 +1064,7 @@ def create_movies(reg_buffer_set, args, fg=None, bg=None):
         else:
             reg_svd = get_svd2(reg_buf, svd_num=svd_num, ds=ds)
 
-    # do some post processing on the buffer set. Steps after this
+    # do some post processing on the buffer set. Sttiff after this
     # normalizes and change dtype of images (cannot take for data operation)
 
     reg_buf = img_post_process_set2(reg_buf, destripe=ds, sc=None)
@@ -1511,7 +1511,7 @@ def main2():
                     new_imset = [im - new_imset[0] for im in new_imset[1:]]
                     num_fn = num_fn[1:]
 
-                # Steps after this normalizes and change dtype of images (cannot take for data operation)
+                # Sttiff after this normalizes and change dtype of images (cannot take for data operation)
 
                 new_imset_svd_process = np.copy(new_imset)
 
@@ -1697,7 +1697,7 @@ def main():
             # im = (normalize_img(im, -1, 1))
             images[i][buf] = normalize_img(_tmp.copy(), -1, 1)
 
-    # Image processing steps
+    # Image processing sttiff
     for buf in buffers:
         for i, im in enumerate(images):
             _tmp = 0
