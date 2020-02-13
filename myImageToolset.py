@@ -19,7 +19,7 @@ from skimage.morphology import remove_small_objects
 # from sklearn.decomposition import FastICA, KernelPCA, PCA
 
 
-def autocrop(img, min_size=30, convert_gray=False, extra_space=0.2):
+def autocrop(img, min_size=40, convert_gray=False, extra_space=0.4):
     """Separate front ground and background. Choose only largest objects as front ground.
 
     min_size: minimum size in pixels of objects to include.
