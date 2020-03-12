@@ -1,0 +1,2 @@
+#!/bin/bash
+$HOME/anaconda3/bin/python ./Lyd2Gwy.py "$@"

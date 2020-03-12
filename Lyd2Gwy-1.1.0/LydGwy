@@ -1,10 +1,2 @@
 #!/bin/bash
-# DIR=$(
-# 	cd "$(dirname "$0")"
-# 	pwd
-# )
-# for f in "$@"
-# do
-# 	$DIR/Lyd2Gwy "$f"
-# done
 python ./Lyd2Gwy.py "$@"
